@@ -1,9 +1,9 @@
 # my_main.py
 # ...the backend of our application...
 ''' This script launches processes '''
-from my_database_utils import DatabaseConnector
-from my_data_extraction  import DataExtractor
-from my_data_cleaning import DataCleaner
+from database_utils import DatabaseConnector
+from data_extraction  import DataExtractor
+from data_cleaning import DataCleaner
 
 import sys 
 print(sys.version_info)
