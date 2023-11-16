@@ -36,16 +36,16 @@ class DataCleaner:
     
     # clean the store df like the others
     def clean_stores_data(self,stores_df):
-        selection = ['GB','US','DE']
-        stores_df2 = stores_df[stores_df.country_code.isin(selection)]
-        #store_df.loc[:,'country_code'] = store_df.loc[store_df['country_code'].isin(selection)]
-        print(stores_df2.shape)
-        #duplicate_rows = store_df.duplicated()
-        #print("Number of duplicate rows:", duplicate_rows.sum())# no:0
-        #clean_stores_table = store_df.drop_duplicates(inplace=False)
-        clean_stores_table = stores_df2
+        print(stores_df.shape)
+        stores_df = stores_df.drop(['lat'],axis = 1)
+        duplicate_rows = stores_df.duplicated()
+        selection = ['US','GB','DE']
+        stores_df = stores_df[stores_df.country_code.isin(selection)]
+        print("Number of duplicate rows:", duplicate_rows.sum())# no:0
+        clean_stores_table= stores_df.drop_duplicates(inplace=False)
         print(clean_stores_table.shape)
         return clean_stores_table
+        #clean_stores_table = stores_table.drop(['lat'],axis = 1)
         # there are three rows with NULL in all columns
         # there are mispelled categories in Country
         # latiitude is poorly populated
