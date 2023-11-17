@@ -31,6 +31,17 @@ class DataCleaner:
         #clean_card_details = card_details.drop_duplicates(inplace=True)# changes original dataframe!
         clean_card_details = card_details.drop_duplicates(inplace=False)# 
         print(type(clean_card_details))
+        print(clean_card_details.shape)
+        clean_card_details['card_number'] = clean_card_details['card_number'].astype('string')
+        clean_card_details['card_number'] = clean_card_details['card_number'].str.replace('?','')
+        #unwanted_rows =['Z8855EXTJX','Y8ITI33X30','VAB9DSB8ZM','T23BTBBJDD','RNSCD8OCIM','OMZSBN2XG3','NULL','NB8JJ05D7R','MOZOT5Q95V','MIK9G2EMM0','LSWT9DT4G4','K0084A9R99','JQTLQAAQTD','I4PWLWSIRJ','G0EF4TS8C8']
+        #result = clean_card_details.drop(unwanted_rows,axis=1)
+        #result = clean_card_details['card_number'].isalnum()
+        #result = clean_card_details['card_number'].isinstance('card_number',float)
+        cards_selection = ['American Express','Diners Club /Carte Blanche','Discover','JCB 15 digit','JCB 16 digit','Maestro','Mastercard','VISA 13 digit','VISA 16 digit','VISA 19 digit']
+        clean_card_details = clean_card_details[clean_card_details.card_provider.isin(cards_selection)]
+        print(clean_card_details.shape)
+        #clean_card_details.dropna(how='any',inplace=True)
         #print(clean_card_details.head())
         return clean_card_details
     
