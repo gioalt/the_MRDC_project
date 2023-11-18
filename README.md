@@ -6,7 +6,7 @@ A data wharehouse is built in a local postgres database (target db), for collect
 The data is pulled from S3 AWS (Amazon Web Services) in various formats,cleaned and copied to db *sales_data*, in which the final six tables are organised in a star-based schema (see which primary and foreign keys are in my_schema.pdf)
 
 ## Table of Contents
-The suite of programs that generates and populates the target database are named as follows:
+The program suite that generates and populates the target database is made of four code files named as follows:
     main.py
     data_extraction.py
     data_cleaning.py
@@ -17,6 +17,8 @@ The databases' credential files, added to .gitignore and required for creating t
     source_creds.yaml
 
 The directory, queries/, contains both queries in .mssql files for reproducing the outputs, and the snapshot of the outputs when tested as fiiles .png
+
+NB: The four python files should be kept in the same directory, and the suite is launched in the same container directory. See Usage Instructions below.
 
 ### Description of the project:
  The project was developed in four stages, as follows:
