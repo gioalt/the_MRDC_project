@@ -20,14 +20,18 @@ class DataCleaner:
         #date_times = date_times.drop_duplicates(inplace=True)
         print(type(data_times.drop_duplicates(inplace=True)))
         data_times = pd.DataFrame(data_times)
+        selection = ['Evening','Late_Hours','Midday','Morning']
+        data_times = data_times[data_times.time_period.isin(selection)]
         print(type(data_times))
         print(data_times.head())
         return data_times
     
     # clean the pdf data from and go to utils to push it to the target db
     def clean_card_data(self,card_details):
-        duplicate_rows = card_details.duplicated()
-        print("Number of duplicate rows (card data):", duplicate_rows.sum())# no: 9
+        print(card_details.shape)
+        print(card_details.head())
+        #duplicate_rows = card_details.duplicated()
+        #print("Number of duplicate rows (card data):", duplicate_rows.sum())# no: 10
         #clean_card_details = card_details.drop_duplicates(inplace=True)# changes original dataframe!
         clean_card_details = card_details.drop_duplicates(inplace=False)# 
         print(type(clean_card_details))
@@ -38,9 +42,12 @@ class DataCleaner:
         #result = clean_card_details.drop(unwanted_rows,axis=1)
         #result = clean_card_details['card_number'].isalnum()
         #result = clean_card_details['card_number'].isinstance('card_number',float)
+        print(clean_card_details.shape)
+        card_details.to_csv("test2_card_details.csv")
         cards_selection = ['American Express','Diners Club /Carte Blanche','Discover','JCB 15 digit','JCB 16 digit','Maestro','Mastercard','VISA 13 digit','VISA 16 digit','VISA 19 digit']
         clean_card_details = clean_card_details[clean_card_details.card_provider.isin(cards_selection)]
         print(clean_card_details.shape)
+        print(type(clean_card_details['card_number']))
         #clean_card_details.dropna(how='any',inplace=True)
         #print(clean_card_details.head())
         return clean_card_details
@@ -63,15 +70,27 @@ class DataCleaner:
         # there iis nothing at index 0 ...
         # line 447 it s all funny
         # all in pandas
-
-    def convert_product_weights(self, products_df):
-        pass
     
     def clean_products_data(self,products_df):
+        print(products_df.shape)# (xxxxx, 11)
         products_df.dropna(how='any',inplace= True)
-        products_df.reset_index(inplace=True)  
-        print(products_df.shape)#(1849, 11)
+        products_df.reset_index(inplace=True)
+        selection = ['diy','food-and-drink','health-and-beauty','homeware','pets','sports-andd-leisure','toys-and-games']
+        products_df = products_df[products_df.category.isin(selection)]
+        print(products_df.shape)# (1806, 11)
+        print(products_df.head())
+        # £ -> '' str -> float
+        products_df['product_price'] = products_df['product_price'].astype('string')
+        products_df['product_price'] = products_df['product_price'].str.replace('£','')
+        products_df['product_price']= products_df['product_price'].astype(float)
+        
+        ##### to do
+        
+        #####
+        
         return products_df
+
+        
     
     def clean_users_data(self,users_table):
         print("Number of rows and columns:", users_table.shape)# it does not come out!
@@ -79,6 +98,8 @@ class DataCleaner:
         duplicate_rows = users_table.duplicated()
         print("Number of duplicate rows  (users data):", duplicate_rows.sum())# no: 0
         clean_users_table = users_table.copy()
+        selection = ['US','GB','DE']
+        clean_users_table = clean_users_table[clean_users_table.country_code.isin(selection)]
         print(clean_users_table.shape)
         #clean_users_table = users_table.drop(['first_name','last_name','1'],axis = 1)
         print(clean_users_table)
@@ -88,7 +109,7 @@ class DataCleaner:
 # if __name__ == "__main__":
 # 	datax = DataCleaner()# create an object of class
 # 	print(datax)# <__main__.DataExtractor object at 0x100a20110>
-# 	experiment = datax.clean_stores_data(stores_df)
-# 	experiment.to_csv('experiment_8.csv')
+# 	experiment = datax.clean_users_data()
+# 	experiment.to_csv('experiment_9.csv')
 
 
