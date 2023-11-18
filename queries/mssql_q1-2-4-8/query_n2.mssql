@@ -1,0 +1,1 @@
+select locality, count (*) from stores_table group by locality	ORDER BY COUNT(*) DESC;

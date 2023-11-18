@@ -1,0 +1,12 @@
+select 	count (orders_table.product_quantity) as numbers_of_sales,sum(orders_table.product_quantity) as product_quantity_count,
+	case 
+		when stores_table.store_code = 'WEB-1388012W' then 'Web'
+		else 'Offline'
+		end as product_location
+from orders_table
+join data_times on orders_table.date_uuid = data_times.date_uuid
+join products_table on orders_table.product_code = products_table.product_code
+join stores_table on orders_table.store_code = stores_table.store_code
+group by product_location
+ORDER BY sum(orders_table.product_quantity) ASC;
+	

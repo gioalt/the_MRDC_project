@@ -1,0 +1,10 @@
+select round(count(orders_table.date_uuid)) as sales, 
+stores_table.store_type, 
+stores_table.country_code
+from orders_table
+join data_times on orders_table.date_uuid = data_times.date_uuid
+join products_table on orders_table.product_code = products_table.product_code
+join stores_table on orders_table.store_code = stores_table.store_code
+where stores_table.country_code = 'DE'
+group by stores_table.store_type,stores_table.country_code
+--ORDER BY sum(orders_table.product_quantity*products_table.product_price) DESC;
