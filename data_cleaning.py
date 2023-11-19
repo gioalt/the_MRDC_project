@@ -43,7 +43,7 @@ class DataCleaner:
         #result = clean_card_details['card_number'].isalnum()
         #result = clean_card_details['card_number'].isinstance('card_number',float)
         print(clean_card_details.shape)
-        card_details.to_csv("test2_card_details.csv")
+        #card_details.to_csv("test2_card_details.csv")
         cards_selection = ['American Express','Diners Club /Carte Blanche','Discover','JCB 15 digit','JCB 16 digit','Maestro','Mastercard','VISA 13 digit','VISA 16 digit','VISA 19 digit']
         clean_card_details = clean_card_details[clean_card_details.card_provider.isin(cards_selection)]
         print(clean_card_details.shape)
@@ -84,8 +84,18 @@ class DataCleaner:
         products_df['product_price'] = products_df['product_price'].str.replace('£','')
         products_df['product_price']= products_df['product_price'].astype(float)
         
-        ##### to do
-        
+        ##### variable 'weight' is a mixture of alphanumeric characters, highly heterogenous.
+        # was it just number*kg one could apply 'quantities'; but there are grams/ml as well
+        # 1g = 0.001Kg, 1ml =~ 0.001Kg(as per  milestone request). Moreover, a few entries
+        # are expressions such as '8 x 150g' which definitely call regexp in; package 're'.
+        # and still it will not possible to process all in one go, likelyy a loop is necessary.
+        # how about lambdas?
+        # anyways this is time-consuming
+
+        # no:
+        #products_df['weight'] = products_df['weight'].astype('string')
+        #products_df['weight'] = products_df['weight'].str.replace('Kg','')
+        #products_df['weight']= products_df['weight'].astype(float)
         #####
         
         return products_df
