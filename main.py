@@ -87,9 +87,9 @@ def run_users_table_pipeline():
 # run pipeline for each table , instantiating the class ... 
 if __name__ == "__main__":
     run_card_details_pipeline()
-    #run_data_times_pipeline()
-    #run_orders_table_pipeline()
-    #run_stores_table_pipeline()
-    #run_products_table_pipeline()
-    #run_users_table_pipeline()
+    run_data_times_pipeline()
+    run_orders_table_pipeline()
+    run_stores_table_pipeline()
+    run_products_table_pipeline()
+    run_users_table_pipeline()
     #
