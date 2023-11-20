@@ -6,7 +6,7 @@ A data wharehouse is built in a local postgres database (target db), for collect
 
 The star-based schema is achieved by linking five tables to the central table using primary keys as seen in my_schema.pdf file. The final six tables are also provided in this repository. The database is subsequently queried to answer business questions aimed at understanding patterns of sales across the company's international stores and online service. The queries are provided, too.
 
-The development of this project has involved extensive application of object-oriented programming in Python (version 3.11.5), with encapsulatiion/isolation principles, pandas' data wrangling methods, and SQLAlchemy mapper toolkit; the use of pgadmin4, a postgres management tool, and extensive application of SQL (postgres) query language for both further data manipulation and elementary data analysis.
+The development of this project has involved extensive application of object-oriented programming in Python (version 3.11.5), with encapsulatiion/isolation principles, pandas' data wrangling methods, and SQLAlchemy mapper toolkit; the use of pgadmin4, a postgres management tool, and extensive application of SQL query language(postgreSQL16) for both further data manipulation and elementary data analysis.
 
 ## Table of Contents
 The program suite that generates and populates the target database is made of four code files named as follows:
