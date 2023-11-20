@@ -1,0 +1,10 @@
+ALTER TABLE data_times
+ALTER COLUMN date_uuid TYPE UUID USING date_uuid::UUID;
+
+select 	data_times.month, 
+round(sum(orders_table.product_quantity*products_table.product_price)) as total_revenue
+from orders_table
+	join data_times on orders_table.date_uuid = data_times.date_uuid
+	join products_table on  orders_table.product_code = products_table.product_code
+group by data_times.month
+ORDER BY sum(orders_table.product_quantity*products_table.product_price) DESC;

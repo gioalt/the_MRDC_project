@@ -1,0 +1,17 @@
+ALTER TABLE users_table
+ALTER COLUMN first_name TYPE VARCHAR(255);
+
+ALTER TABLE users_table
+ALTER COLUMN last_name TYPE VARCHAR(255);
+
+ALTER TABLE users_table
+/*ALTER COLUMN date_of_birth TYPE DATE;*/
+
+ALTER TABLE users_table
+ALTER COLUMN country_code TYPE VARCHAR(2);
+
+ALTER TABLE users_table
+ALTER COLUMN user_uuid TYPE UUID USING user_uuid::UUID;
+
+ALTER TABLE users_table
+ALTER COLUMN join_ddate TYPE DATE;

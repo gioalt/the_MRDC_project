@@ -1,0 +1,10 @@
+/*  query no 5 */
+select 	stores_table.store_type, 
+		round(sum (orders_table.product_quantity*products_table.product_price)) as revenue,
+		round(sum(100.0*orders_table.product_quantity*products_table.product_price)/(sum(sum(orders_table.product_quantity*products_table.product_price)) over ())) AS percentage_total
+from orders_table
+	join data_times on orders_table.date_uuid = data_times.date_uuid
+	join products_table on  orders_table.product_code = products_table.product_code
+	join stores_table on orders_table.store_code = stores_table.store_code
+group by stores_table.store_type
+ORDER BY percentage_total DESC;

@@ -1,0 +1,36 @@
+/* mssql: to link the leaves tables to the stem table, for future query */
+
+/* products table  */
+ALTER TABLE products_table
+	ADD PRIMARY KEY (product_code);
+ALTER TABLE orders_table 
+	ADD FOREIGN KEY(product_code) 
+	REFERENCES products_table(product_code);
+
+/* stores table  */
+ALTER TABLE stores_table
+	ADD PRIMARY KEY (store_code);
+ALTER TABLE orders_table 
+	ADD FOREIGN KEY(store_code) 
+	REFERENCES stores_table(store_code);
+	
+/* users_table: no */
+ALTER TABLE users_table
+	ADD PRIMARY KEY (user_uuid);
+ALTER TABLE orders_table 
+	ADD FOREIGN KEY(user_uuid) 
+	REFERENCES users_table(user_uuid);
+
+/* data_times: ok  */
+ALTER TABLE data_times
+	ADD PRIMARY KEY (date_uuid);
+ALTER TABLE orders_table 
+	ADD FOREIGN KEY(date_uuid) 
+	REFERENCES data_times(date_uuid);
+
+/* card_details: this table required further cleaning? */
+ALTER TABLE card_details
+	ADD PRIMARY KEY (card_number);
+ALTER TABLE orders_table 
+	ADD FOREIGN KEY(card_number) 
+	REFERENCES card_details(card_number);

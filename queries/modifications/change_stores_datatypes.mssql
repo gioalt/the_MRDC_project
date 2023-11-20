@@ -1,0 +1,28 @@
+ALTER TABLE stores_table
+ALTER COLUMN longitude TYPE FLOAT USING longitude::double precision;
+
+ALTER TABLE stores_table
+ALTER COLUMN locality TYPE VARCHAR(255);
+
+ALTER TABLE stores_table
+ALTER COLUMN store_code TYPE VARCHAR(11);
+
+ALTER TABLE stores_table
+ALTER COLUMN staff_number TYPE SMALLINT;
+
+ALTER TABLE stores_table
+ALTER COLUMN opening_date TYPE DATE USING opening_date::DATE;
+
+ALTER TABLE stores_table
+ALTER COLUMN store_type TYPE VARCHAR(255);
+/*DROP store_type NOT NULL;*/
+
+ALTER TABLE stores_table
+ALTER COLUMN latitude TYPE FLOAT;
+
+ALTER TABLE stores_table
+ALTER COLUMN country_code TYPE VARCHAR(2);
+
+ALTER TABLE stores_table
+ALTER COLUMN continent TYPE VARCHAR(255);
+
