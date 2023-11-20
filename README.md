@@ -2,8 +2,11 @@
 A repo for the Multinational Retail Data Centralisation project
 
 # The Multinational Retail Data Centralisation
-A data wharehouse is built in a local postgres database (target db), for collecting and organising specific data retrieved from various sources 
-The data is pulled from S3 AWS (Amazon Web Services) in various formats,cleaned and copied to db *sales_data*, in which the final six tables are organised in a star-based schema (see which primary and foreign keys are in my_schema.pdf)
+A data wharehouse is built in a local postgres database (target db), for collecting and organising specific data retrieved from various sources. The data is pulled from S3 AWS (Amazon Web Services) in various formats,cleaned and copied to db *sales_data*, in which the final six tables are organised.
+
+The star-based schema is achieved by linking five tables to the central table using primary keys as seen in my_schema.pdf file. The final six tables are also provided in this repository. The database is subsequently queried to answer business questions aimed at understanding patterns of sales across the company's international stores and online service. The queries are provided, too.
+
+The development of this project has involved extensive application of object-oriented programming in Python (version 3.11.5), with encapsulatiion/isolation principles, pandas' data wrangling methods, and SQLAlchemy mapper toolkit; the use of pgadmin4, a postgres management tool, and extensive application of SQL (postgres) query language for both further data manipulation and elementary data analysis.
 
 ## Table of Contents
 The program suite that generates and populates the target database is made of four code files named as follows:
@@ -35,10 +38,11 @@ NB: The four python files should be kept in the same directory, and the suite is
        - primary key in five tables; foreign keys to orders table
        - star-based schema, see my_schema.pdf
        
-   - Query data (SQL code scripts: .mssql files, and pgadmin4 outputs as .png): queries 1,2,4 8 are complete; and queries 3,5,6,7,9 work-in-progress
+   - Query data (SQL code scripts: .mssql files, and pgadmin4 outputs as .png): queries 1,2,4 8 completed in a first round; queries 3,5,6,7 in a  second round. query 9 is work-in-progress.
+
    
 ### Updates
-Nov 16,2023: the six pipelines are functional and complete. Nov 18,2023: the complete queries included, a new README file is uploaded.
+Nov 16,2023: the six pipelines are functional and complete. Nov 18,2023: the complete queries included, a new README file is uploaded. Nov 20, 2023: adds final queries, and learning considerations to README file.
 
 ### Usage Instructions
 For testing and/or further development of this program suite, do select specific pipelines by uncommenting the relevant lines in the main.py; to launch the suite to populate the local database, uncomment all six pipelines in main.py and do as follows (either way):
