@@ -13,6 +13,8 @@ import requests
 from tabula import read_pdf
 import requests
 import boto3
+import yaml
+#
 #
 #
 class DataExtractor:
@@ -46,7 +48,11 @@ class DataExtractor:
 		return card_details
 
 	def API_key(self):
-		return  {'x-api-key':'yFBQbwXe9J3sd6zWVAMrK6lcxxr0q1lr2PT6DDMX'}
+		file_api = 'x_api_key.yaml'
+		with open(file_api, 'r') as api_key:
+			headers = yaml.safe_load(api_key)
+		x_api_key = headers['headers']
+		return x_api_key
 
 	#def list_number_of_stores():
 	def list_number_of_stores(self):
@@ -87,3 +93,10 @@ class DataExtractor:
 # 	print(datax)# <__main__.DataExtractor object at 0x100a20110>
 # 	experiment = datax.extract_from_s3()
 # 	experiment.to_csv('experiment3.csv')
+# TEST NEW API KEY FEED: PASS; comment below lines out
+if __name__ == "__main__":
+	datax = DataExtractor()
+	experiment = datax.API_key()
+	print(experiment)
+	experiment_2 = datax.list_retrieve_stores()
+	print(experiment_2)
