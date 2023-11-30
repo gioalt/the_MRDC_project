@@ -90,7 +90,6 @@ class DataCleaner:
         # are expressions such as '8 x 150g' which definitely call regexp in; package 're'.
         # and still it will not possible to process all in one go, likelyy a loop is necessary.
         # how about lambdas?
-        # anyways this is time-consuming
 
         # no:
         #products_df['weight'] = products_df['weight'].astype('string')

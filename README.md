@@ -6,7 +6,7 @@ A data wharehouse is built in a local postgres database (target db), for collect
 
 The star-based schema is achieved by linking five tables to the central table using primary keys as seen in my_schema.pdf file. The final six tables are also provided in this repository. The database is subsequently queried to answer business questions aimed at understanding patterns of sales across the company's international stores and online service. The queries are provided, too.
 
-The development of this project has involved extensive application of object-oriented programming in Python (version 3.11.5), with encapsulatiion/isolation principles, pandas' data wrangling methods, and SQLAlchemy mapper toolkit; the use of pgadmin4, a postgres management tool, and extensive application of SQL query language(postgreSQL16) for both further data manipulation and elementary data analysis. Last but not least, intensive usage of GitHub!
+The development of this project has involved extensive application of object-oriented programming in Python (version 3.11.5), with encapsulatiion/isolation principles, pandas' data wrangling methods, and SQLAlchemy mapper toolkit; the use of pgadmin4, a postgres management tool, and extensive application of SQL query language(postgreSQL16) for both further data manipulation and elementary data analysis. Last but not least, intensive usage of GitHub.
 
 ## Table of Contents
 The program suite that generates and populates the target database is made of four code files named as follows:
@@ -51,4 +51,4 @@ For testing and/or further development of this program suite, do select specific
         % python3 main.py > output.log   
 
 ### Licence Information
-This program suite is not covered by licence. It was built in partial fullfilment of the requirements for the AICore Data Engineering certification. I want to acknowledge the AiCore Team for their invaluable support: Thanks!
+This program suite is not covered by licence. It was built in partial fullfilment of the requirements for the AICore Data Engineering certification. I want to acknowledge the AiCore Team for their invaluable support.
